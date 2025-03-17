@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 const { Client, GatewayIntentBits } = require("discord.js");
 const { translate } = require('@vitalets/google-translate-api');
 
