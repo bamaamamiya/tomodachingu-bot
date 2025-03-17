@@ -18,7 +18,7 @@ client.once("ready", async () => {
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 
-	const content = message.content.toLowerCase().trim()
+  const content = message.content.toLowerCase().trim();
   const member = message.member;
   const displayName = member
     ? member.displayName || message.author.username
@@ -28,26 +28,37 @@ client.on("messageCreate", async (message) => {
   console.log(`Received message content: "${message.content}"`);
   console.log(`Normalized content: "${content}"`);
 
+  const greetingsEnglish = ["hello", "hi", "hey", "yo"];
+  const greetingsIndo = ["halo"];
+  const greetingsJapan = ["konnichiwa", "こんにちは"];
+  const greetingsKorean = ["annyeong", "안녕"];
   // === Greetings ===
-if (content.includes("hello") || content.includes("hi")) {
-  message.reply(`Hello back, ${displayName}! 👋`);
-} else if (content.includes("halo")) {
-  message.reply(`Halo juga, ${displayName}! 🙌`);
-} else if (content.includes("konnichiwa") || content.includes("こんにちは")) {
-  message.reply(`Konnichiwa, ${displayName}! 🏯`);
-} else if (content.includes("annyeong") || content.includes("안녕")) {
-  message.reply(`Annyeong, ${displayName}! 🇰🇷`);
-}
-
+  if (greetingsEnglish.some(greet => content.includes(greet))) {
+		message.reply(`Hello back, ${displayName}! 👋`);
+	} else if (greetingsIndo.some(greet => content.includes(greet))) {
+		message.reply(`Halo juga, ${displayName}! 🙌`);
+	} else if (greetingsJapan.some(greet => content.includes(greet))) {
+		message.reply(`Konnichiwa, ${displayName}! 🏯`);
+	} else if (greetingsKorean.some(greet => content.includes(greet))) {
+		message.reply(`Annyeong, ${displayName}! 🇰🇷`);
+	}
 
   // === Help & Info Commands ===
   if (content === "!help") {
     message.reply(
-      `Hi ${displayName}! I'm **Tomodachingu Bot**, here to assist you! 🌏\nCommands:\n- !help: Show this help menu\n- !info: Information about Tomodachingu server\n- !translate <source_lang> <target_lang> <text>: Translate text`
+      `Hi ${displayName}! I'm **Tomodachingu Bot**, here to assist you! 🌏\nCommands:\n- !help: Show this help menu\n- !info: Information about Tomodachingu server\n- !translate <source_lang> <target_lang> <text>`
     );
   } else if (content === "!info") {
     message.reply(
-      `🌍 **Tomodachingu Server Info** 🌍\nTomodachingu is an international community where everyone can connect, share, and learn across cultures.\n\n✨ We focus on networking between dropshippers & entrepreneurs from around the world, but everyone looking to make friends is welcome!\n\n📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia\n📌 Features: Dropshipping discussions, international networking, cultural exchange, language learning!\n\nWelcome aboard, ${displayName}! 🎉`
+      `🌍 **Tomodachingu Server Info** 🌍
+Tomodachingu is an international community where everyone can connect, learn, and share across cultures.
+
+✨ We focus on language exchange, cultural learning, and creating a space where people from all backgrounds can share knowledge and experiences.
+
+📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia
+📌 Features: Language exchange, cultural discussions, learning resources, and friendly community vibes!
+
+Welcome aboard, ${displayName}! 🎉`
     );
   } else if (content.startsWith("!translate")) {
     const args = message.content.split(" ");
