@@ -27,9 +27,7 @@ client.on('messageCreate', async (message) => {
     message.reply(`Hello back, ${displayName}! 👋`);
   } else if (content.includes('halo')) {
     message.reply(`Halo juga, ${displayName}! 🙌`);
-  } else if (content.includes('what up bot')) {
-    message.reply(`what up dude, ${displayName}! 🙌`);
-  } else if (content.includes('konnichiwa') || content.includes('こんにちは')) {
+  }	else if (content.includes('konnichiwa') || content.includes('こんにちは')) {
     message.reply(`Konnichiwa, ${displayName}! 🏯`);
   } else if (content.includes('annyeong') || content.includes('안녕')) {
     message.reply(`Annyeong, ${displayName}! 🇰🇷`);
