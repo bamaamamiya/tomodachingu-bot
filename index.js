@@ -52,7 +52,19 @@ client.on("interactionCreate", async (interaction) => {
 
   if (commandName === "info") {
     await interaction.reply(
-      `🌍 **Tomodachingu Server Info** 🌍\nTomodachingu is an international community where everyone can connect, share, and learn across cultures.\n\n✨ We focus on networking between dropshippers & entrepreneurs from around the world, but everyone looking to make friends is welcome!\n\n📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia\n📌 Features: Dropshipping discussions, international networking, cultural exchange, language learning!\n\nWelcome aboard, ${interaction.user.username}! 🎉`
+			`🌍 **Tomodachingu Server Info** 🌍\n` +
+			`Tomodachingu is an international community where everyone can connect, learn, and share across cultures.\n\n` +
+			`✨ We focus on language exchange, cultural learning, and creating a space where people from all backgrounds can share knowledge and experiences.\n\n` +
+			`📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia\n` +
+			`📌 Features: Language exchange, cultural discussions, learning resources, and friendly community vibes!\n\n` +
+			`🕒 **Active Hours:**\n` +
+			`- Indonesia (WIB): 6 PM - 12 AM\n` +
+			`- Japan (JST): 8 PM - 2 AM\n` +
+			`- Korea (KST): 8 PM - 2 AM\n` +
+			`- USA (EST): 6 AM - 12 PM\n` +
+			`- UK (GMT): 11 AM - 5 PM\n\n` +
+			`Feel free to join anytime, but these are the peak hours when most members are active!\n\n` +
+			`Welcome aboard, ${displayName}! 🎉`
     );
   } else if (commandName === "help") {
     await interaction.reply(
