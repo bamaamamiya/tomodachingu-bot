@@ -33,15 +33,15 @@ client.on("messageCreate", async (message) => {
   const greetingsJapan = ["konnichiwa", "こんにちは"];
   const greetingsKorean = ["annyeong", "안녕"];
   // === Greetings ===
-  if (greetingsEnglish.some(greet => content.includes(greet))) {
-		message.reply(`Hello back, ${displayName}! 👋`);
-	} else if (greetingsIndo.some(greet => content.includes(greet))) {
-		message.reply(`Halo juga, ${displayName}! 🙌`);
-	} else if (greetingsJapan.some(greet => content.includes(greet))) {
-		message.reply(`Konnichiwa, ${displayName}! 🏯`);
-	} else if (greetingsKorean.some(greet => content.includes(greet))) {
-		message.reply(`Annyeong, ${displayName}! 🇰🇷`);
-	}
+  if (greetingsEnglish.some((greet) => content.includes(greet))) {
+    message.reply(`Hello back, ${displayName}! 👋`);
+  } else if (greetingsIndo.some((greet) => content.includes(greet))) {
+    message.reply(`Halo juga, ${displayName}! 🙌`);
+  } else if (greetingsJapan.some((greet) => content.includes(greet))) {
+    message.reply(`Konnichiwa, ${displayName}! 🏯`);
+  } else if (greetingsKorean.some((greet) => content.includes(greet))) {
+    message.reply(`Annyeong, ${displayName}! 🇰🇷`);
+  }
 
   // === Help & Info Commands ===
   if (content === "!help") {
@@ -68,8 +68,8 @@ Tomodachingu is an international community where everyone can connect, learn, an
 Feel free to join anytime, but these are the peak hours when most members are active!
 
 Welcome aboard, ${displayName}! 🎉`
+);
 
-    );
   } else if (content.startsWith("!translate")) {
     const args = message.content.split(" ");
 
