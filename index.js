@@ -11,6 +11,9 @@ const client = new Client({
   ],
 });
 
+const greetingCooldowns = new Map(); // userId -> timestamp
+
+
 client.once("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -28,6 +31,10 @@ client.on("messageCreate", async (message) => {
   console.log(`Received message content: "${message.content}"`);
   console.log(`Normalized content: "${content}"`);
 
+
+	const userId = message.author.id;
+  const now = Date.now();
+  const cooldownPeriod = 3 * 60 * 60 * 1000; // 3 jam dalam ms
 // === Greetings ===
 
 // English & casual variations
@@ -42,18 +49,27 @@ const greetingsJp = ["konichiwa","konnichiwa", "こんにちは", "やあ", "お
 // Korean
 const greetingsKr = ["annyeong", "안녕", "안녕하세요", "여보세요"]; // annyeong, annyeonghaseyo, yeoboseyo (phone hello)
 
-// === Logic ===
+const greetedRecently = greetingCooldowns.get(userId);
 
-if (greetingsJp.some(greet => content.includes(greet))) {
-  message.reply(`Konnichiwa, ${displayName}! 🏯`);
-} else if (greetingsKr.some(greet => content.includes(greet))) {
-  message.reply(`Annyeong, ${displayName}! 🇰🇷`);
-} else if (greetingsId.some(greet => content.toLowerCase().includes(greet))) {
-  message.reply(`Halo juga, ${displayName}! 🙌`);
-} else if (greetingsEn.some(greet => content.toLowerCase().includes(greet))) {
-  message.reply(`Hello back, ${displayName}! 👋`);
+ // === Check cooldown ===
+ if (!greetedRecently || now - greetedRecently >= cooldownPeriod) {
+	// === Respond greetings ===
+	if (greetingsJp.some(greet => content.includes(greet))) {
+		message.reply(`Konnichiwa, ${displayName}! 🏯`);
+		greetingCooldowns.set(userId, now);
+	} else if (greetingsKr.some(greet => content.includes(greet))) {
+		message.reply(`Annyeong, ${displayName}! 🇰🇷`);
+		greetingCooldowns.set(userId, now);
+	} else if (greetingsId.some(greet => content.includes(greet))) {
+		message.reply(`Halo juga, ${displayName}! 🙌`);
+		greetingCooldowns.set(userId, now);
+	} else if (greetingsEn.some(greet => content.includes(greet))) {
+		message.reply(`Hello back, ${displayName}! 👋`);
+		greetingCooldowns.set(userId, now);
+	}
+} else {
+	console.log(`Greeting cooldown active for ${displayName}. Skipping...`);
 }
-
 
 
   // === Help & Info Commands ===
