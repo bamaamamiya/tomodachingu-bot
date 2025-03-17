@@ -29,15 +29,16 @@ client.on("messageCreate", async (message) => {
   console.log(`Normalized content: "${content}"`);
 
   // === Greetings ===
-  if (content.includes("hello")) {
-    message.reply(`Hello back, ${displayName}! 👋`);
-  } else if (content.includes("halo")) {
-    message.reply(`Halo juga, ${displayName}! 🙌`);
-  } else if (content.includes("konnichiwa") || content.includes("こんにちは")) {
-    message.reply(`Konnichiwa, ${displayName}! 🏯`);
-  } else if (content.includes("annyeong") || content.includes("안녕")) {
-    message.reply(`Annyeong, ${displayName}! 🇰🇷`);
-  }
+if (content.includes("hello") || content.includes("hi")) {
+  message.reply(`Hello back, ${displayName}! 👋`);
+} else if (content.includes("halo")) {
+  message.reply(`Halo juga, ${displayName}! 🙌`);
+} else if (content.includes("konnichiwa") || content.includes("こんにちは")) {
+  message.reply(`Konnichiwa, ${displayName}! 🏯`);
+} else if (content.includes("annyeong") || content.includes("안녕")) {
+  message.reply(`Annyeong, ${displayName}! 🇰🇷`);
+}
+
 
   // === Help & Info Commands ===
   if (content === "!help") {
