@@ -33,9 +33,15 @@ client.once("ready", async () => {
   const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
   try {
-    console.log("Registering slash commands...");
+    console.log("Clearing previous slash commands...");
     await rest.put(
-      Routes.applicationGuildCommands(client.user.id, "549165018231603203"), // <-- Ganti dengan Guild ID kamu
+      Routes.applicationGuildCommands(client.user.id, "549165018231603203"),
+      { body: [] } // clear previous commands
+    );
+
+    console.log("Registering fresh slash commands...");
+    await rest.put(
+      Routes.applicationGuildCommands(client.user.id, "549165018231603203"),
       { body: commands }
     );
     console.log("Slash commands registered!");
