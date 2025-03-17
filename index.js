@@ -133,7 +133,7 @@ client.on("messageCreate", async (message) => {
     console.log(`Greeting cooldown active for ${displayName}. Skipping...`);
   }
 
-  Prefix commands
+  // Prefix commands
   if (content === "!help") {
     message.reply(
       `Hi ${displayName}! I'm **Tomodachingu Bot**, here to assist you! 🌏\nCommands:\n- !help: Show this help menu\n- !info: Information about Tomodachingu server\n- !translate <source_lang> <target_lang> <text>: Translate text`
