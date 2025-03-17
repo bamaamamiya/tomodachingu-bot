@@ -86,7 +86,7 @@ Welcome aboard, ${displayName}! 🎉`
 
     try {
       const res = await translate(text, { from: sourceLang, to: targetLang });
-			message.reply(`Translated (${sourceLang} → ${targetLang}): ${res.text}\n\nSorry if the translation isn't perfect!`);
+			message.reply(`Translated (${sourceLang} → ${targetLang}): ${res.text}\n\nSorry if the translation isn't perfect!🙏`);
     } catch (error) {
       console.error("Translation error:", error);
       message.reply(
