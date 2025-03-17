@@ -55,22 +55,25 @@ client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   const { commandName } = interaction;
+  const displayName = interaction.member
+    ? interaction.member.displayName || interaction.user.username
+    : interaction.user.username;
 
   if (commandName === "info") {
     await interaction.reply(
-			`🌍 **Tomodachingu Server Info** 🌍\n` +
-			`Tomodachingu is an international community where everyone can connect, learn, and share across cultures.\n\n` +
-			`✨ We focus on language exchange, cultural learning, and creating a space where people from all backgrounds can share knowledge and experiences.\n\n` +
-			`📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia\n` +
-			`📌 Features: Language exchange, cultural discussions, learning resources, and friendly community vibes!\n\n` +
-			`🕒 **Active Hours:**\n` +
-			`- Indonesia (WIB): 6 PM - 12 AM\n` +
-			`- Japan (JST): 8 PM - 2 AM\n` +
-			`- Korea (KST): 8 PM - 2 AM\n` +
-			`- USA (EST): 6 AM - 12 PM\n` +
-			`- UK (GMT): 11 AM - 5 PM\n\n` +
-			`Feel free to join anytime, but these are the peak hours when most members are active!\n\n` +
-			`Welcome aboard, ${displayName}! 🎉`
+      `🌍 **Tomodachingu Server Info** 🌍\n` +
+        `Tomodachingu is an international community where everyone can connect, learn, and share across cultures.\n\n` +
+        `✨ We focus on language exchange, cultural learning, and creating a space where people from all backgrounds can share knowledge and experiences.\n\n` +
+        `📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia\n` +
+        `📌 Features: Language exchange, cultural discussions, learning resources, and friendly community vibes!\n\n` +
+        `🕒 **Active Hours:**\n` +
+        `- Indonesia (WIB): 6 PM - 12 AM\n` +
+        `- Japan (JST): 8 PM - 2 AM\n` +
+        `- Korea (KST): 8 PM - 2 AM\n` +
+        `- USA (EST): 6 AM - 12 PM\n` +
+        `- UK (GMT): 11 AM - 5 PM\n\n` +
+        `Feel free to join anytime, but these are the peak hours when most members are active!\n\n` +
+        `Welcome aboard, ${displayName}! 🎉`
     );
   } else if (commandName === "help") {
     await interaction.reply(
@@ -89,7 +92,6 @@ client.on("messageCreate", async (message) => {
     ? member.displayName || message.author.username
     : message.author.username;
 
-  // Log message
   console.log(`Received message content: "${message.content}"`);
   console.log(`Normalized content: "${content}"`);
 
@@ -139,28 +141,8 @@ client.on("messageCreate", async (message) => {
     console.log(`Greeting cooldown active for ${displayName}. Skipping...`);
   }
 
-  // Prefix commands
-  if (content === "!help") {
-    message.reply(
-      `Hi ${displayName}! I'm **Tomodachingu Bot**, here to assist you! 🌏\nCommands:\n- !help: Show this help menu\n- !info: Information about Tomodachingu server\n- !translate <source_lang> <target_lang> <text>: Translate text`
-    );
-  } else if (content === "!info") {
-    message.reply(
-      `🌍 **Tomodachingu Server Info** 🌍\n` +
-        `Tomodachingu is an international community where everyone can connect, learn, and share across cultures.\n\n` +
-        `✨ We focus on language exchange, cultural learning, and creating a space where people from all backgrounds can share knowledge and experiences.\n\n` +
-        `📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia\n` +
-        `📌 Features: Language exchange, cultural discussions, learning resources, and friendly community vibes!\n\n` +
-        `🕒 **Active Hours:**\n` +
-        `- Indonesia (WIB): 6 PM - 12 AM\n` +
-        `- Japan (JST): 8 PM - 2 AM\n` +
-        `- Korea (KST): 8 PM - 2 AM\n` +
-        `- USA (EST): 6 AM - 12 PM\n` +
-        `- UK (GMT): 11 AM - 5 PM\n\n` +
-        `Feel free to join anytime, but these are the peak hours when most members are active!\n\n` +
-        `Welcome aboard, ${displayName}! 🎉`
-    );
-  } else if (content.startsWith("!translate")) {
+  // Prefix command only for translate
+  if (content.startsWith("!translate")) {
     const args = message.content.split(" ");
 
     if (args.length < 4) {
