@@ -37,7 +37,7 @@ const greetingsEn = ["hello", "hi", "hey", "heii", "heyyy", "yo", "sup"];
 const greetingsId = ["halo", "hai", "hei", "hey"];
 
 // Japanese
-const greetingsJp = ["konnichiwa", "こんにちは", "やあ", "おはよう", "こんばんは"]; // konnichiwa, yaa, ohayou (morning), konbanwa (evening)
+const greetingsJp = ["konichiwa","konnichiwa", "こんにちは", "やあ", "おはよう", "こんばんは"]; // konnichiwa, yaa, ohayou (morning), konbanwa (evening)
 
 // Korean
 const greetingsKr = ["annyeong", "안녕", "안녕하세요", "여보세요"]; // annyeong, annyeonghaseyo, yeoboseyo (phone hello)
