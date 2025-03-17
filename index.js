@@ -18,7 +18,7 @@ client.once("ready", async () => {
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 
-  const content = message.content.toLowerCase().trim(); // Normalize
+	const content = message.content.toLowerCase().trim().normalize();
   const member = message.member;
   const displayName = member
     ? member.displayName || message.author.username
