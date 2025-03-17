@@ -28,16 +28,32 @@ client.on("messageCreate", async (message) => {
   console.log(`Received message content: "${message.content}"`);
   console.log(`Normalized content: "${content}"`);
 
-  // === Greetings ===
-if (content.includes("hello")) {
+// === Greetings ===
+
+// English & casual variations
+const greetingsEn = ["hello", "hi", "hey", "heii", "heyyy", "yo", "sup"];
+
+// Indonesian
+const greetingsId = ["halo", "hai", "hei", "hey"];
+
+// Japanese
+const greetingsJp = ["konnichiwa", "こんにちは", "やあ", "おはよう", "こんばんは"]; // konnichiwa, yaa, ohayou (morning), konbanwa (evening)
+
+// Korean
+const greetingsKr = ["annyeong", "안녕", "안녕하세요", "여보세요"]; // annyeong, annyeonghaseyo, yeoboseyo (phone hello)
+
+// === Logic ===
+
+if (greetingsEn.some(greet => content.toLowerCase().includes(greet))) {
   message.reply(`Hello back, ${displayName}! 👋`);
-} else if (content.includes("halo")) {
+} else if (greetingsId.some(greet => content.toLowerCase().includes(greet))) {
   message.reply(`Halo juga, ${displayName}! 🙌`);
-} else if (content.includes("konnichiwa") || content.includes("こんにちは")) {
+} else if (greetingsJp.some(greet => content.includes(greet))) {
   message.reply(`Konnichiwa, ${displayName}! 🏯`);
-} else if (content.includes("annyeong") || content.includes("안녕")) {
+} else if (greetingsKr.some(greet => content.includes(greet))) {
   message.reply(`Annyeong, ${displayName}! 🇰🇷`);
 }
+
 
 
   // === Help & Info Commands ===
