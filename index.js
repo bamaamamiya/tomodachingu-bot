@@ -58,7 +58,17 @@ Tomodachingu is an international community where everyone can connect, learn, an
 📌 Main Languages: English, 日本語, 한국어, Bahasa Indonesia
 📌 Features: Language exchange, cultural discussions, learning resources, and friendly community vibes!
 
+🕒 **Active Hours:**
+- Indonesia (WIB): 6 PM - 12 AM
+- Japan (JST): 8 PM - 2 AM
+- Korea (KST): 8 PM - 2 AM
+- USA (EST): 6 AM - 12 PM
+- UK (GMT): 11 AM - 5 PM
+
+Feel free to join anytime, but these are the peak hours when most members are active!
+
 Welcome aboard, ${displayName}! 🎉`
+
     );
   } else if (content.startsWith("!translate")) {
     const args = message.content.split(" ");
