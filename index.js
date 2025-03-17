@@ -18,15 +18,17 @@ client.once("ready", async () => {
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
 
-	const content = message.content.toLowerCase().trim()
+  const rawContent = message.content.trim();
+  const content = rawContent.toLowerCase();
+  console.log(`Received: "${rawContent}" | Normalized: "${content}"`);
   const member = message.member;
   const displayName = member
     ? member.displayName || message.author.username
     : message.author.username;
 
   // === Log Message Content ===
-  console.log(`Received message content: "${message.content}"`);
-  console.log(`Normalized content: "${content}"`);
+  console.log(`Before normalize: "${message.content}"`);
+  console.log(`After normalize: "${message.content.normalize()}"`);
 
   // === Greetings ===
   if (content.includes("hello") || content.includes("hi")) {
