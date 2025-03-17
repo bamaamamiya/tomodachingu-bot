@@ -31,10 +31,10 @@ client.on("messageCreate", async (message) => {
 // === Greetings ===
 
 // English & casual variations
-const greetingsEn = ["hello", "hi", "hey", "heii", "heyyy", "yo", "sup"];
+const greetingsEn = ["hello", "hi", "hey", "heyy" , "heii", "heyyy", "yo", "sup"];
 
 // Indonesian
-const greetingsId = ["halo", "hai", "hei", "hey"];
+const greetingsId = ["halo", "hai", "hei"];
 
 // Japanese
 const greetingsJp = ["konichiwa","konnichiwa", "こんにちは", "やあ", "おはよう", "こんばんは"]; // konnichiwa, yaa, ohayou (morning), konbanwa (evening)
@@ -44,14 +44,14 @@ const greetingsKr = ["annyeong", "안녕", "안녕하세요", "여보세요"]; /
 
 // === Logic ===
 
-if (greetingsEn.some(greet => content.toLowerCase().includes(greet))) {
-  message.reply(`Hello back, ${displayName}! 👋`);
-} else if (greetingsId.some(greet => content.toLowerCase().includes(greet))) {
-  message.reply(`Halo juga, ${displayName}! 🙌`);
-} else if (greetingsJp.some(greet => content.includes(greet))) {
+if (greetingsJp.some(greet => content.includes(greet))) {
   message.reply(`Konnichiwa, ${displayName}! 🏯`);
 } else if (greetingsKr.some(greet => content.includes(greet))) {
   message.reply(`Annyeong, ${displayName}! 🇰🇷`);
+} else if (greetingsId.some(greet => content.toLowerCase().includes(greet))) {
+  message.reply(`Halo juga, ${displayName}! 🙌`);
+} else if (greetingsEn.some(greet => content.toLowerCase().includes(greet))) {
+  message.reply(`Hello back, ${displayName}! 👋`);
 }
 
 
